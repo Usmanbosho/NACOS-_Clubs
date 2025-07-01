@@ -16,79 +16,50 @@
     {% include 'sidebar.html' %}
 
     <main class="main-content">
-       {% include 'header.html' %}
+    {% include 'header.html' %}
 
-      <!-- Welcome Card -->
-      <div class="session-info">
-         <h5 style="margin-bottom: 8px;">2024/2025</h5> 
-         <h3  style="margin-bottom: 8px;">200 Level LEVEL</h3> 
-         <h5 >First Semester </h5> 
-      </div>
-      
+    {% if session['role'] == 'admin' %}
+    <section class="admin-panel welcome-card">
+        <h2>🔐 Admin Controls</h2>
+        <p>You are logged in as an <strong>Administrator</strong>.</p>
 
-      <!-- Overview -->
-       <h5 style="margin-left: 30px; margin-top: 40px; margin-bottom: -10px;">Courses</h5>
-       <div class="course-wrapper">
-        <div class="course-form-panel">
-          <div class="form-group">
-            <select name="department">
-                <option value="2024/2025 Session">2024/2025 Session</option>
-            </select>
-            <select name="level">
-                <option value="First Semester ">First Semester</option>
-            </select>
-          </div>
-          <div class="button-row">
-            <button type="submit">Download Course Form</button>
-            <button type="button" class="outline-btn"> Generate Exam Card</button>
-          </div>
+        <div class="overview">
+            <div class="card blue">
+                <div class="vive">
+                    <i class="fa fa-users"></i>
+                    <h3>Total Users</h3>
+                    <p class="big-number">102</p>
+                </div>
+                <div class="course-status">
+                    <span>Manage Users</span>
+                    <a href="/manage-users">Go</a>
+                </div>
+            </div>
+
+            <div class="card light">
+                <div class="vive">
+                    <i class="fa fa-database"></i>
+                    <h3>Database</h3>
+                    <p class="big-number">Live</p>
+                </div>
+                <div class="course-status">
+                    <span>Backup</span>
+                    <a href="/backup-db">Backup</a>
+                </div>
+            </div>
         </div>
-      
-        <div class="course-list-panel">
-          <div class="course-list-item">
-            <h4 style="justify-content: space-between;">MTH211 <b style="float: right; color: gray; font-size: 10px;">Unit Load</b></h4>
-            <p style="color: gray; font-size: 10px;"> Linear algebra i</p>
-            <div class="unit-load">3</div>
-          </div>
-          <div class="course-list-item">
-            <h4 style="justify-content: space-between;">GNS111 <b style="float: right; color: gray; font-size: 10px;">Unit Load</b></h4>
-            <p style="color: gray; font-size: 10px;"> Use of English I</p>
-            <div class="unit-load">2</div>
-          </div>
-          <div class="course-list-item">
-            <h4 style="justify-content: space-between;">GNS211 <b style="float: right; color: gray; font-size: 10px;">Unit Load</b></h4>
-            <p style="color: gray; font-size: 10px;"> Information Science</p>
-            <div class="unit-load">2</div>
-          </div>
-          <div class="course-list-item">
-            <h4 style="justify-content: space-between;">CS211 <b style="float: right; color: gray; font-size: 10px;">Unit Load</b></h4>
-            <p style="color: gray; font-size: 10px;"> Computer Programming I</p>
-            <div class="unit-load">3</div>
-          </div>
-          <div class="course-list-item">
-            <h4 style="justify-content: space-between;">CS212 <b style="float: right; color: gray; font-size: 10px;">Unit Load</b></h4>
-            <p style="color: gray; font-size: 10px;"> Web Programming</p>
-            <div class="unit-load">3</div>
-          </div>
-          <div class="course-list-item">
-            <h4 style="justify-content: space-between;">ST211 <b style="float: right; color: gray; font-size: 10px;">Unit Load</b></h4>
-            <p style="color: gray; font-size: 10px;"> Discrete and Cont. Prob. and Prob. Distributions</p>
-            <div class="unit-load">3</div>
-          </div>
-          <div class="course-list-item">
-            <h4 style="justify-content: space-between;">PHY211 <b style="float: right; color: gray; font-size: 10px;">Unit Load</b></h4>
-            <p style="color: gray; font-size: 10px;"> Intermediate Mechanics</p>
-            <div class="unit-load">3</div>
-          </div>
-          <div class="course-list-item">
-            <h4 style="justify-content: space-between;">MTH212 <b style="float: right; color: gray; font-size: 10px;">Unit Load</b></h4>
-            <p style="color: gray; font-size: 10px;"> Mathematical Method</p>
-            <div class="unit-load">2</div>
-          </div>
-          <!-- Repeat .course-list-item as needed -->
-        </div>
-      </div>
-      
+    </section>
+    {% endif %}
+
+    <!-- Normal user dashboard continues here -->
+    <section class="welcome-card">
+        <h2>🎉 Welcome, {{ user }}</h2>
+        <p>This is your dashboard. Here’s what’s happening today.</p>
+    </section>
+
+</main>
+
+     
     </main>
   </div>
 
