@@ -18,6 +18,16 @@ class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(150), unique=True, nullable=False)
     password = db.Column(db.String(200), nullable=False)
+    role = db.Column(db.String(50), default='user')  # 'admin' or 'user'
+
+if not User.query.filter_by(username='admin').first():
+    admin_user = User(
+        username='admin',
+        password=generate_password_hash('1234', method='pbkdf2:sha256'),
+        role='admin'
+    )
+    db.session.add(admin_user)
+    db.session.commit()
 
 # Create database and default admin user
 with app.app_context():
